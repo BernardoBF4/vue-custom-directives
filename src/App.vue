@@ -1,17 +1,23 @@
 <template>
-  <h1 v-color="['blue', 'red', 'green']">Vue Custom Directive</h1>
+  <h1 v-color="colors">Vue Custom Directive</h1>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+const colors = ref(['blue', 'red', 'green'])
+
 function vColor(el, binding) {
-  const colors = binding.value
   let i = 0
   setInterval(() => {
-    el.style.color = colors[i]
+    el.style.color = binding.value[i]
     i++
-    if (i === colors.length - 1) {
+    if (i === binding.value.length) {
       i = 0
     }
-  }, 500)
+  }, 1000)
 }
+
+setTimeout(() => {
+  colors.value.push('pink')
+}, 5000)
 </script>
