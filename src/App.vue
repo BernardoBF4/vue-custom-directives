@@ -1,9 +1,17 @@
 <template>
-  <h1 v-purple>Vue Custom Directive</h1>
+  <h1 v-color="['blue', 'red', 'green']">Vue Custom Directive</h1>
 </template>
 
 <script setup>
-function vPurple(el) {
-  el.style.color = 'purple'
+function vColor(el, binding) {
+  const colors = binding.value
+  let i = 0
+  setInterval(() => {
+    el.style.color = colors[i]
+    i++
+    if (i === colors.length - 1) {
+      i = 0
+    }
+  }, 500)
 }
 </script>
