@@ -2,9 +2,11 @@
   <h1 v-if="show" v-color:slow.underline.italic="colors">Vue Custom Directive</h1>
   <!-- <h1 v-color:crazy="colors">Vue Custom Directive</h1> -->
   <button @click="show = !show">Toggle</button>
+  <ClickOutside />
 </template>
 
 <script setup>
+import ClickOutside from './components/ClickOutside.vue'
 import { ref } from 'vue'
 const colors = ref(['blue', 'red', 'green'])
 const show = ref(true)
