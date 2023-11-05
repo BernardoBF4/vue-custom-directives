@@ -1,5 +1,5 @@
 <template>
-  <h1 v-color:slow="colors">Vue Custom Directive</h1>
+  <h1 v-color:slow.underline.italic="colors">Vue Custom Directive</h1>
   <h1 v-color:crazy="colors">Vue Custom Directive</h1>
 </template>
 
@@ -8,6 +8,13 @@ import { ref } from 'vue'
 const colors = ref(['blue', 'red', 'green'])
 
 function vColor(el, binding) {
+  if (binding.modifiers.underline) {
+    el.style.textDecoration = 'underline'
+  }
+
+  if (binding.modifiers.italic) {
+    el.style.fontStyle = 'italic'
+  }
   const speeds = {
     slow: 2000,
     normal: 1000,
